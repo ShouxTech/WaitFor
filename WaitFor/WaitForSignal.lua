@@ -12,7 +12,7 @@ return function(signal, timeout: number)
         waitSignal:Fire(...);
     end));
 
-    local res = waitSignal:Wait();
+    local res = waitSignal:Wait(); -- Warning: Only reads first return value of the signal.
 
     trove:Destroy();
 
