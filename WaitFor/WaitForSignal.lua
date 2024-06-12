@@ -12,9 +12,9 @@ return function(signal, timeout: number)
         waitSignal:Fire(...);
     end));
 
-    local res = waitSignal:Wait(); -- Warning: Only reads first return value of the signal.
+    local res = {waitSignal:Wait()}; -- Wrapping in table and using table.unpack in return to allow for reading multiple signal arguments.
 
     trove:Destroy();
 
-    return res;
+    return table.unpack(res);
 end;
