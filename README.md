@@ -1,4 +1,4 @@
-# Observers
+# WaitFor
 Wait for data with a timeout.
 
 ## Install
