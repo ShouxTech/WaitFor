@@ -14,7 +14,10 @@ return function(signal, timeout: number)
 
     local res = {waitSignal:Wait()}; -- Wrapping in table and using table.unpack in return to allow for reading multiple signal arguments.
 
-    trove:Destroy();
+    -- Using task.defer to prevent a specific task.cancel error from Trove destroy.
+    task.defer(function()
+        trove:Destroy();
+    end);
 
     return table.unpack(res);
 end;
